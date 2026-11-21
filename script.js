@@ -11,7 +11,30 @@
   /* ----------------------------- language toggle ----------------------------- */
   var currentLang = "bn";
   var langToggleBtn = document.getElementById("langToggle");
+  var langLabel = document.getElementById("langLabel");
   var translatable = document.querySelectorAll("[data-bn][data-en]");
+
+  var LANG_META = {
+    bn: { code: "BN", label: "Switch to Bengali / বাংলায় যান" },
+    en: { code: "EN", label: "Switch to English / ইংরেজিতে যান" }
+  };
+
+  /* Like the hamburger icon, the button always shows the language
+     you will get when you tap it: BN mode shows "EN", EN mode shows "BN". */
+  function updateLangToggle(animate) {
+    if (!langLabel) return;
+    var target = currentLang === "bn" ? "en" : "bn";
+    langLabel.textContent = LANG_META[target].code;
+    if (langToggleBtn) {
+      langToggleBtn.setAttribute("aria-label", LANG_META[target].label);
+      langToggleBtn.setAttribute("title", LANG_META[target].label);
+    }
+    if (animate) {
+      langLabel.classList.remove("lang-pop");
+      void langLabel.offsetWidth; /* restart the pop animation */
+      langLabel.classList.add("lang-pop");
+    }
+  }
 
   function applyLanguage(lang) {
     currentLang = lang;
@@ -21,10 +44,10 @@
       el.textContent = el.getAttribute("data-" + lang);
     });
 
-    langToggleBtn.querySelectorAll(".lang-opt").forEach(function (opt) {
-      opt.classList.toggle("is-active", opt.getAttribute("data-lang") === lang);
-    });
+    updateLangToggle(true);
   }
+
+  updateLangToggle(false);
 
   if (langToggleBtn) {
     langToggleBtn.addEventListener("click", function () {
@@ -36,18 +59,38 @@
   var hamburger = document.getElementById("hamburger");
   var mainNav = document.getElementById("mainNav");
 
-  function closeMobileNav() {
-    mainNav.classList.remove("is-open");
-    hamburger.setAttribute("aria-expanded", "false");
+  function setMobileNav(open) {
+    if (!mainNav) return;
+    mainNav.classList.toggle("is-open", open);
+    if (hamburger) {
+      /* both the attribute and the class drive the cross icon (double safeguard) */
+      hamburger.setAttribute("aria-expanded", String(open));
+      hamburger.classList.toggle("is-open", open);
+    }
+    /* lock page scroll while the menu overlay is open */
+    document.documentElement.classList.toggle("nav-locked", open);
   }
 
-  if (hamburger) {
+  function closeMobileNav() { setMobileNav(false); }
+
+  if (hamburger && mainNav) {
     hamburger.addEventListener("click", function () {
-      var isOpen = mainNav.classList.toggle("is-open");
-      hamburger.setAttribute("aria-expanded", String(isOpen));
+      setMobileNav(!mainNav.classList.contains("is-open"));
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMobileNav();
+    });
+    mainNav.addEventListener("click", function (e) {
+      if (!e.target.closest("a")) closeMobileNav(); /* tap on empty overlay closes */
     });
   }
-  mainNav.querySelectorAll("a").forEach(function (link) {
+  if (mainNav) {
+    mainNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMobileNav);
+    });
+  }
+  /* the reserve button sits outside the overlay — close the menu when it is tapped */
+  document.querySelectorAll(".nav-actions a").forEach(function (link) {
     link.addEventListener("click", closeMobileNav);
   });
 
@@ -102,6 +145,54 @@
         vinePath.style.strokeDashoffset = 0;
         heroVine.classList.add("is-drawn");
       });
+    });
+  }
+
+  /* ----------------------------- scroll reveal ----------------------------- */
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
+
+  document.querySelectorAll("[data-reveal-group]").forEach(function (group) {
+    group.querySelectorAll("[data-reveal]").forEach(function (el, i) {
+      el.style.setProperty("--reveal-delay", Math.min(i * 90, 540) + "ms");
+    });
+  });
+
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealEls.forEach(function (el) { el.classList.add("in-view"); });
+  } else {
+    revealEls.forEach(function (el) {
+      el.classList.add("reveal");
+      el.classList.add("reveal--" + (el.getAttribute("data-reveal") || "up"));
+    });
+
+    var revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var targets = entry.target.__revealTargets || [entry.target];
+          targets.forEach(function (el) { el.classList.add("in-view"); });
+          revealObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    revealEls.forEach(function (el) {
+      var variant = el.getAttribute("data-reveal");
+      /* an element hidden entirely by its own clip-path never reports an
+         intersection, so for the curtain variants we observe the parent
+         and let it trigger the child's reveal */
+      if (variant === "clip" || variant === "clip-r") {
+        var parent = el.parentElement;
+        if (parent) {
+          (parent.__revealTargets = parent.__revealTargets || []).push(el);
+          revealObserver.observe(parent);
+        } else {
+          revealObserver.observe(el);
+        }
+      } else {
+        revealObserver.observe(el);
+      }
     });
   }
 
