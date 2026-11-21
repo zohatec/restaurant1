@@ -41,8 +41,8 @@
     </nav>
 
     <div class="nav-actions">
-      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language / ভাষা পরিবর্তন করুন">
-        <span class="lang-opt is-active" data-lang="bn">বাং</span><span class="lang-sep">/</span><span class="lang-opt" data-lang="en">EN</span>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English / ইংরেজিতে যান" title="Switch language / ভাষা বদলান">
+        <span class="lang-label" id="langLabel">EN</span>
       </button>
       <a href="#reservation" class="btn btn-small" data-bn="বুকিং" data-en="Reserve">বুকিং</a>
       <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mainNav">
@@ -98,12 +98,12 @@
 <!-- ================= STORY ================= -->
 <section class="story" id="story">
   <div class="container story-grid">
-    <figure class="story-photo">
+    <figure class="story-photo" data-reveal="clip">
       <img src="https://images.unsplash.com/photo-1716816211590-c15a328a5ff0?auto=format&fit=crop&w=1000&q=70" alt="হাতে বাটা মশলা" loading="lazy">
     </figure>
 
     <div class="story-copy">
-      <blockquote class="story-quote">
+      <blockquote class="story-quote" data-reveal>
         <p data-bn="“আমার ঠাকুরমার হাতের রান্নার স্বাদ, আজও আমাদের রান্নাঘরে বেঁচে আছে।”" data-en="“My grandmother's recipes still live in our kitchen, exactly as she made them.”">“আমার ঠাকুরমার হাতের রান্নার স্বাদ, আজও আমাদের রান্নাঘরে বেঁচে আছে।”</p>
         <cite>
           <span data-bn="শেফ রাহাত করিম" data-en="Chef Rahat Karim">শেফ রাহাত করিম</span>
@@ -112,18 +112,18 @@
         </cite>
       </blockquote>
 
-      <p class="story-text" data-bn="২০১০ সালে ঢাকার এক ছোট্ট রান্নাঘর থেকে শুরু। আজ রসনা এমন এক জায়গা, যেখানে পুরনো বাংলার রেসিপি আধুনিক রান্নাঘরের যত্নে পরিবেশিত হয়। সরিষার তেল, তাজা মাছ, আর হাতে বাটা মশলা — এখনও আমাদের রান্নার ভিত্তি।" data-en="What began in a small Dhaka kitchen in 2010 has grown into a place where old Bengali recipes meet modern kitchen craft. Mustard oil, fresh fish, and hand-ground spices are still the foundation of everything we cook.">২০১০ সালে ঢাকার এক ছোট্ট রান্নাঘর থেকে শুরু। আজ রসনা এমন এক জায়গা, যেখানে পুরনো বাংলার রেসিপি আধুনিক রান্নাঘরের যত্নে পরিবেশিত হয়। সরিষার তেল, তাজা মাছ, আর হাতে বাটা মশলা — এখনও আমাদের রান্নার ভিত্তি।</p>
+      <p class="story-text" data-reveal data-bn="২০১০ সালে ঢাকার এক ছোট্ট রান্নাঘর থেকে শুরু। আজ রসনা এমন এক জায়গা, যেখানে পুরনো বাংলার রেসিপি আধুনিক রান্নাঘরের যত্নে পরিবেশিত হয়। সরিষার তেল, তাজা মাছ, আর হাতে বাটা মশলা — এখনও আমাদের রান্নার ভিত্তি।" data-en="What began in a small Dhaka kitchen in 2010 has grown into a place where old Bengali recipes meet modern kitchen craft. Mustard oil, fresh fish, and hand-ground spices are still the foundation of everything we cook.">২০১০ সালে ঢাকার এক ছোট্ট রান্নাঘর থেকে শুরু। আজ রসনা এমন এক জায়গা, যেখানে পুরনো বাংলার রেসিপি আধুনিক রান্নাঘরের যত্নে পরিবেশিত হয়। সরিষার তেল, তাজা মাছ, আর হাতে বাটা মশলা — এখনও আমাদের রান্নার ভিত্তি।</p>
 
-      <div class="stats" id="statsBlock">
-        <div class="stat">
+      <div class="stats" id="statsBlock" data-reveal-group>
+        <div class="stat" data-reveal>
           <span class="stat-num" data-target="14">0</span><span class="stat-plus">+</span>
           <span class="stat-label" data-bn="বছরের অভিজ্ঞতা" data-en="Years of craft">বছরের অভিজ্ঞতা</span>
         </div>
-        <div class="stat">
+        <div class="stat" data-reveal>
           <span class="stat-num" data-target="120">0</span><span class="stat-plus">+</span>
           <span class="stat-label" data-bn="পদের সংগ্রহ" data-en="Recipes on the menu">পদের সংগ্রহ</span>
         </div>
-        <div class="stat">
+        <div class="stat" data-reveal>
           <span class="stat-num" data-target="50" data-suffix="k">0</span><span class="stat-plus">+</span>
           <span class="stat-label" data-bn="সন্তুষ্ট অতিথি" data-en="Guests served">সন্তুষ্ট অতিথি</span>
         </div>
@@ -135,15 +135,15 @@
 <!-- ================= MENU ================= -->
 <section class="menu" id="menu">
   <div class="container">
-    <h2 class="section-title" data-bn="আমাদের মেনু" data-en="Our Menu">আমাদের মেনু</h2>
-    <p class="section-lead" data-bn="প্রতিদিন সকালে বাজার থেকে আনা তাজা উপকরণে তৈরি।" data-en="Made daily with ingredients from the morning market.">প্রতিদিন সকালে বাজার থেকে আনা তাজা উপকরণে তৈরি।</p>
+    <h2 class="section-title" data-reveal data-bn="আমাদের মেনু" data-en="Our Menu">আমাদের মেনু</h2>
+    <p class="section-lead" data-reveal data-bn="প্রতিদিন সকালে বাজার থেকে আনা তাজা উপকরণে তৈরি।" data-en="Made daily with ingredients from the morning market.">প্রতিদিন সকালে বাজার থেকে আনা তাজা উপকরণে তৈরি।</p>
 
-    <div class="menu-tabs" role="tablist" id="menuTabs">
-      <button class="tab active" data-cat="starters" role="tab" aria-selected="true" data-bn="শুরুয়াত" data-en="Starters">শুরুয়াত</button>
-      <button class="tab" data-cat="mains" role="tab" aria-selected="false" data-bn="মূল পদ" data-en="Mains">মূল পদ</button>
-      <button class="tab" data-cat="rice" role="tab" aria-selected="false" data-bn="ভাত ও বিরিয়ানি" data-en="Rice &amp; Biryani">ভাত ও বিরিয়ানি</button>
-      <button class="tab" data-cat="sweets" role="tab" aria-selected="false" data-bn="মিষ্টান্ন" data-en="Sweets">মিষ্টান্ন</button>
-      <button class="tab" data-cat="drinks" role="tab" aria-selected="false" data-bn="পানীয়" data-en="Drinks">পানীয়</button>
+    <div class="menu-tabs" role="tablist" id="menuTabs" data-reveal-group>
+      <button class="tab active" data-reveal data-cat="starters" role="tab" aria-selected="true" data-bn="শুরুয়াত" data-en="Starters">শুরুয়াত</button>
+      <button class="tab" data-reveal data-cat="mains" role="tab" aria-selected="false" data-bn="মূল পদ" data-en="Mains">মূল পদ</button>
+      <button class="tab" data-reveal data-cat="rice" role="tab" aria-selected="false" data-bn="ভাত ও বিরিয়ানি" data-en="Rice &amp; Biryani">ভাত ও বিরিয়ানি</button>
+      <button class="tab" data-reveal data-cat="sweets" role="tab" aria-selected="false" data-bn="মিষ্টান্ন" data-en="Sweets">মিষ্টান্ন</button>
+      <button class="tab" data-reveal data-cat="drinks" role="tab" aria-selected="false" data-bn="পানীয়" data-en="Drinks">পানীয়</button>
     </div>
 
     <div class="menu-panels" id="menuPanels">
@@ -305,13 +305,13 @@
 
 <!-- ================= CHEF'S SPECIAL ================= -->
 <section class="special">
-  <img class="special-bg" src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?auto=format&fit=crop&w=1800&q=65" alt="" aria-hidden="true">
+  <img class="special-bg" data-reveal="kenburns" src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?auto=format&fit=crop&w=1800&q=65" alt="" aria-hidden="true">
   <div class="special-overlay">
-    <div class="container special-content">
-      <p class="special-label" data-bn="আজকের বিশেষ পদ" data-en="Today's special">আজকের বিশেষ পদ</p>
-      <h3 data-bn="কাচ্চি বিরিয়ানি" data-en="Kacchi Biryani">কাচ্চি বিরিয়ানি</h3>
-      <p class="special-desc" data-bn="ঘি ও জাফরানের সুবাসে দমে রাঁধা, বাসমতি চাল ও কোমল খাসির মাংসে।" data-en="Slow-cooked in ghee and saffron, with tender mutton and fragrant basmati rice.">ঘি ও জাফরানের সুবাসে দমে রাঁধা, বাসমতি চাল ও কোমল খাসির মাংসে।</p>
-      <div class="special-row">
+    <div class="container special-content" data-reveal-group>
+      <p class="special-label" data-reveal data-bn="আজকের বিশেষ পদ" data-en="Today's special">আজকের বিশেষ পদ</p>
+      <h3 data-reveal data-bn="কাচ্চি বিরিয়ানি" data-en="Kacchi Biryani">কাচ্চি বিরিয়ানি</h3>
+      <p class="special-desc" data-reveal data-bn="ঘি ও জাফরানের সুবাসে দমে রাঁধা, বাসমতি চাল ও কোমল খাসির মাংসে।" data-en="Slow-cooked in ghee and saffron, with tender mutton and fragrant basmati rice.">ঘি ও জাফরানের সুবাসে দমে রাঁধা, বাসমতি চাল ও কোমল খাসির মাংসে।</p>
+      <div class="special-row" data-reveal>
         <span class="special-price">৳450</span>
         <a href="#reservation" class="btn btn-primary" data-bn="আজই বুক করুন" data-en="Reserve today">আজই বুক করুন</a>
       </div>
@@ -322,24 +322,24 @@
 <!-- ================= GALLERY ================= -->
 <section class="gallery" id="gallery">
   <div class="container">
-    <h2 class="section-title" data-bn="আমাদের রান্নাঘর ও পরিবেশ" data-en="Our kitchen &amp; atmosphere">আমাদের রান্নাঘর ও পরিবেশ</h2>
-    <div class="gallery-grid">
-      <figure class="g-item g-tall">
+    <h2 class="section-title" data-reveal data-bn="আমাদের রান্নাঘর ও পরিবেশ" data-en="Our kitchen &amp; atmosphere">আমাদের রান্নাঘর ও পরিবেশ</h2>
+    <div class="gallery-grid" data-reveal-group>
+      <figure class="g-item g-tall" data-reveal="zoom">
         <img src="https://images.unsplash.com/photo-1758405155772-ef0f0077375c?auto=format&fit=crop&w=900&q=65" alt="সন্ধ্যার আলোয় ডাইনিং হল" loading="lazy">
         <figcaption data-bn="সন্ধ্যার আলোয় আমাদের ডাইনিং হল" data-en="Our dining hall by evening light">সন্ধ্যার আলোয় আমাদের ডাইনিং হল</figcaption>
       </figure>
-      <figure class="g-item g-word g-mustard">
+      <figure class="g-item g-word g-mustard" data-reveal="zoom">
         <span data-bn="ইলিশ" data-en="Hilsa">ইলিশ</span>
       </figure>
-      <figure class="g-item">
+      <figure class="g-item" data-reveal="zoom">
         <img src="https://images.unsplash.com/photo-1716816211590-c15a328a5ff0?auto=format&fit=crop&w=900&q=65" alt="হাতে বাটা মশলা" loading="lazy">
         <figcaption data-bn="হাতে বাটা মশলার ঘ্রাণ" data-en="The aroma of hand-ground spices">হাতে বাটা মশলার ঘ্রাণ</figcaption>
       </figure>
-      <figure class="g-item">
+      <figure class="g-item" data-reveal="zoom">
         <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?auto=format&fit=crop&w=900&q=65" alt="কাচ্চি বিরিয়ানি" loading="lazy">
         <figcaption data-bn="কাচ্চি বিরিয়ানি, গরম গরম" data-en="Kacchi biryani, served hot">কাচ্চি বিরিয়ানি, গরম গরম</figcaption>
       </figure>
-      <figure class="g-item g-word g-maroon">
+      <figure class="g-item g-word g-maroon" data-reveal="zoom">
         <span data-bn="মিষ্টি" data-en="Sweets">মিষ্টি</span>
       </figure>
     </div>
@@ -349,9 +349,9 @@
 <!-- ================= REVIEWS ================= -->
 <section class="reviews" id="reviews">
   <div class="container">
-    <h2 class="section-title" data-bn="অতিথিদের মতামত" data-en="What our guests say">অতিথিদের মতামত</h2>
+    <h2 class="section-title" data-reveal data-bn="অতিথিদের মতামত" data-en="What our guests say">অতিথিদের মতামত</h2>
 
-    <div class="review-carousel" id="reviewCarousel">
+    <div class="review-carousel" id="reviewCarousel" data-reveal>
       <div class="review-track" id="reviewTrack">
         <blockquote class="review-card active">
           <p data-bn="সরিষা ইলিশটা ঠিক আমার দাদির রান্নার মতো স্বাদ।" data-en="The mustard hilsa tasted just like my grandmother's cooking.">সরিষা ইলিশটা ঠিক আমার দাদির রান্নার মতো স্বাদ।</p>
@@ -388,11 +388,11 @@
 <!-- ================= RESERVATION ================= -->
 <section class="reservation" id="reservation">
   <div class="container reservation-grid">
-    <div class="reservation-visual">
+    <div class="reservation-visual" data-reveal="clip-r">
       <img src="https://images.unsplash.com/photo-1763626080059-523898c7ffef?auto=format&fit=crop&w=900&q=65" alt="একজন অতিথি মেনু দেখছেন" loading="lazy">
     </div>
 
-    <div class="reservation-card">
+    <div class="reservation-card" data-reveal>
       <h2 data-bn="টেবিল বুক করুন" data-en="Reserve your table">টেবিল বুক করুন</h2>
       <p data-bn="নিচের ফর্মটি পূরণ করুন — আমরা ফোনে যোগাযোগ করে নিশ্চিত করব।" data-en="Fill in the form below — we'll call to confirm your booking.">নিচের ফর্মটি পূরণ করুন — আমরা ফোনে যোগাযোগ করে নিশ্চিত করব।</p>
 
@@ -436,8 +436,8 @@
 
 <!-- ================= FOOTER / CONTACT ================= -->
 <footer class="site-footer" id="contact">
-  <div class="container footer-grid">
-    <div class="footer-brand">
+  <div class="container footer-grid" data-reveal-group>
+    <div class="footer-brand" data-reveal>
       <span class="logo-text">
         <span class="logo-bn">রসনা</span>
         <span class="logo-en">ROSHONA</span>
@@ -450,7 +450,7 @@
       </div>
     </div>
 
-    <div class="footer-col">
+    <div class="footer-col" data-reveal>
       <h4 data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</h4>
       <p data-bn="হাউস ১২, রোড ৭, ধানমন্ডি, ঢাকা ১২০৫" data-en="House 12, Road 7, Dhanmondi, Dhaka 1205">হাউস ১২, রোড ৭, ধানমন্ডি, ঢাকা ১২০৫</p>
       <p>+৮৮০ ১৭০০-০০০০০০</p>
@@ -458,7 +458,7 @@
       <p data-bn="প্রতিদিন সকাল ১১টা – রাত ১১টা" data-en="Open daily, 11 AM – 11 PM">প্রতিদিন সকাল ১১টা – রাত ১১টা</p>
     </div>
 
-    <div class="footer-col">
+    <div class="footer-col" data-reveal>
       <h4 data-bn="সংক্ষিপ্ত লিংক" data-en="Quick Links">সংক্ষিপ্ত লিংক</h4>
       <a href="#menu" data-bn="মেনু" data-en="Menu">মেনু</a>
       <a href="#reservation" data-bn="বুকিং" data-en="Reservation">বুকিং</a>
@@ -466,7 +466,7 @@
       <a href="#reviews" data-bn="রিভিউ" data-en="Reviews">রিভিউ</a>
     </div>
 
-    <div class="footer-col footer-map">
+    <div class="footer-col footer-map" data-reveal>
       <h4 data-bn="মানচিত্র" data-en="Find us">মানচিত্র</h4>
       <iframe title="Roshona location map" loading="lazy" src="https://www.google.com/maps?q=Dhanmondi,Dhaka&output=embed"></iframe>
     </div>
